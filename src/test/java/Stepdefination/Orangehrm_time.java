@@ -8,6 +8,7 @@ import io.cucumber.java.en.When;
 
 import static Pages.Base.driver;
 import static org.junit.Assert.assertTrue;
+import static utils.Hooks.softassert;
 
 public class Orangehrm_time {
 
@@ -20,7 +21,8 @@ public class Orangehrm_time {
         hp = new homepage(driver);
         attendance = new Attendance(driver);
 
-        assertTrue("User is not on the home page", hp.isOnHomePage());
+        //assertTrue("User is not on the home page", hp.isOnHomePage());
+        softassert.get().assertTrue(hp.isOnHomePage(),"User is not on the home page");
         System.out.println("✓ User is on Home page");
     }
 
@@ -43,10 +45,12 @@ public class Orangehrm_time {
         // Navigate to customers page
         attendance.customers_info();
 
-        assertTrue("User is not on the Attendance page", attendance.isOnAttendancePage());
+        //assertTrue("User is not on the Attendance page", attendance.isOnAttendancePage());
+        softassert.get().assertTrue(attendance.isOnAttendancePage(),"User is not on the Attendance page");
         System.out.println("✓ User is navigated to Customers page");
 
-        assertTrue("Customer table check", attendance.customer_table());
+        //assertTrue("Customer table check", attendance.customer_table());
+        softassert.get().assertTrue(attendance.customer_table(),"Customer table check");
         System.out.println("✓ Customer list available");
     }
 
@@ -65,7 +69,8 @@ public class Orangehrm_time {
         attendance.customers_info();
         Thread.sleep(2000);
 
-        assertTrue("Customer table check", attendance.customer_table());
+        //assertTrue("Customer table check", attendance.customer_table());
+        softassert.get().assertTrue(attendance.customer_table(),"Customer table check");
         System.out.println("✓ User is on customer page");
     }
 
